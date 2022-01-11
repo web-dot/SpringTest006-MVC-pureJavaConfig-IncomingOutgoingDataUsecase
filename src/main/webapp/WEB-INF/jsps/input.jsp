@@ -9,7 +9,15 @@
 <body>
 	<h1>Input View</h1>
 	
-	<b>Quote of the day is: ${qod} </b>
+	<b>Quote of the day is: ${qod} </b><br>
+	<br>
+	<h2>Enter your details</h2>
+	<form action="openWelcome">
+		Enter Name: <input type="text" name="uname"><br>
+		Enter Email: <input type="text" name="email"><br>
+		<br>
+		<input type="submit">
+	</form>
 	
 </body>
 </html>

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springmvc.service.QuoteService;
 
+import Domain.User;
+
 @Controller
 public class HomeController {
 	
@@ -27,15 +29,24 @@ public class HomeController {
 	
 	@RequestMapping({"/home", "/"})
 	public String showHome() {
+		System.out.println("in HC-> showHome()");
 		return "home";
 	}
 	
 	@RequestMapping("/openInputView")
 	public String showInputView(Model model) {
 		System.out.println("in HC-> showInputView()");
+		
+		System.out.println("HC showInputView-> invoking quoteService.getQuote()");
 		String quote = quoteService.getQuote();
+		System.out.println("HC showInputView-> after quoteService.getQuote() quote = " + quote);
 		model.addAttribute("qod", quote);
 		return "input";
 	}
 	
+	@RequestMapping("/openWelcome")
+	public String showWelcome(User userBean) {
+		System.out.println("in HC->showWelcome() uname = " + userBean.getUname() + " email = " + userBean.getEmail());
+		return "welcome";
+	}
 }
