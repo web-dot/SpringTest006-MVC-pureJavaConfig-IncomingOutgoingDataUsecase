@@ -1,14 +1,17 @@
-package com.Springmvctest002.welcome;
+package com.springmvc.config;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+
+import com.springmvc.service.QuoteService;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	private QuoteService quoteService=null;
 
 	public HomeController() {
 		System.out.println("in HC no-rgs constructor");
@@ -25,6 +28,14 @@ public class HomeController {
 	@RequestMapping({"/home", "/"})
 	public String showHome() {
 		return "home";
+	}
+	
+	@RequestMapping("/openInputView")
+	public String showInputView(Model model) {
+		System.out.println("in HC-> showInputView()");
+		String quote = quoteService.getQuote();
+		model.addAttribute("qod", quote);
+		return "input";
 	}
 	
 }

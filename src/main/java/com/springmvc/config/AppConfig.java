@@ -1,20 +1,26 @@
-package com.Springmvctest002.welcome;
+package com.springmvc.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.springmvc.service.QuoteService;
+
 @Configuration
-@ComponentScan({"com.Springmvctest002.welcome"})
+@ComponentScan({"com.springmvc.config"})
 public class AppConfig {
 	
 	@Bean
 	public InternalResourceViewResolver viewResolver() {
-		
 		InternalResourceViewResolver vr = new InternalResourceViewResolver();
 		vr.setPrefix("/WEB-INF/jsps/");
 		vr.setSuffix(".jsp");
 		return vr;
+	}
+	
+	@Bean
+	public QuoteService getQuoteService() {
+		return new QuoteService();
 	}
 }

@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Welcome To Development</h1>
+	<h1>Input View</h1>
 	
-	<a href="openInputView">click here to enter</a>
+	<b>Quote of the day is: ${qod} </b>
+	
 </body>
 </html>

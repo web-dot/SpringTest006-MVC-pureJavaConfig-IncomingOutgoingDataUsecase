@@ -1,4 +1,4 @@
-package com.Springmvctest002.welcome;
+package com.springmvc.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
