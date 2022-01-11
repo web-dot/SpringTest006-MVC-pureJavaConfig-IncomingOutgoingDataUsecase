@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="s" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +13,12 @@
 	<b>Quote of the day is: ${qod} </b><br>
 	<br>
 	<h2>Enter your details</h2>
-	<form action="openWelcome">
-		Enter Name: <input type="text" name="uname"><br>
-		Enter Email: <input type="text" name="email"><br>
+	<s:form action="openWelcome" modelAttribute="user">
+		Enter Name: <s:input path="uname"/><s:errors path="uname"/><br>
+		Enter Email: <s:input path="email"/><br><s:errors path="email"/>
 		<br>
 		<input type="submit">
-	</form>
+	</s:form>
 	
 </body>
 </html>

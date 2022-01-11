@@ -1,9 +1,17 @@
 package Domain;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class User {
 	
-	
+	@NotEmpty
+	@Size(min=5, max=20)
 	private String uname;
+	
+	@NotEmpty
+	@Email
 	private String email;
 	
 	public User() {

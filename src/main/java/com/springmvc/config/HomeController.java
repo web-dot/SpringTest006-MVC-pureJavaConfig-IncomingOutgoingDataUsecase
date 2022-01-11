@@ -1,8 +1,12 @@
 package com.springmvc.config;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springmvc.service.QuoteService;
@@ -41,12 +45,19 @@ public class HomeController {
 		String quote = quoteService.getQuote();
 		System.out.println("HC showInputView-> after quoteService.getQuote() quote = " + quote);
 		model.addAttribute("qod", quote);
+		model.addAttribute("user", new User());
 		return "input";
 	}
 	
 	@RequestMapping("/openWelcome")
-	public String showWelcome(User userBean) {
+	public String showWelcome(@ModelAttribute("user") @Valid User userBean, BindingResult result) {
 		System.out.println("in HC->showWelcome() uname = " + userBean.getUname() + " email = " + userBean.getEmail());
-		return "welcome";
+		if(result.hasErrors()) {
+			System.out.println(result.getAllErrors());
+			return "input";
+		}
+		else {
+			return "welcome";
+		}
 	}
 }
